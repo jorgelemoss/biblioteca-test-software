@@ -6,6 +6,11 @@
 npm install
 ```
 
+Execute prisma command to create DB file:
+```
+npm prisma migrate dev
+```
+
 - Execute dev mode:
 ```
 npm run dev
