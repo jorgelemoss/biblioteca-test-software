@@ -16,7 +16,7 @@ export async function RegisterController(req, res) {
                 message: "Email provider is not acceptable",
             }),
             registration: z.string().min(14).max(14),
-            password: z.string()
+            password: z.string().min(8).max(32)
         }).required({
             name: true,
             email: true,
