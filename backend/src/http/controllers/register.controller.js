@@ -5,6 +5,10 @@ export async function RegisterController(req, res) {
     try {
         const { name, email, registration, password } = req.body // Get user data from client
 
+        if (!name || !email || !registration || !password) {
+            throw new Error("Missing user data, check the information")
+        }
+
         const MakeRegister = makeRegister()
 
         await MakeRegister.execute({ name, email, registration, password }) // Wait receive user data from register.command.js
@@ -20,6 +24,10 @@ export async function RegisterController(req, res) {
             })
 
     } catch (err) {
-        console.error(err)
+        res
+            .status(400)
+            .json({
+                message: err.message
+            })
     }
 }

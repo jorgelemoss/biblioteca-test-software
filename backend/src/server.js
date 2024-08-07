@@ -1,6 +1,7 @@
 /** Imports */
 import http from 'node:http'
 import { app } from './app.js'
+import { errors } from './errors/serverErrors.js'
 
 const PORT = process.env?.PORT || 4000 // Port necessary for server
 
@@ -11,8 +12,9 @@ server.listen(Number(PORT), () => {
 
     try {
         console.log(`Listening at port ${PORT} 🟢`)
-    } catch (err) {
 
-        throw new Error("Have an error 🔴")
+    } catch (err) {
+        throw errors.serverRunError
+
     }
 })

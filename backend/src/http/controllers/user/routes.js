@@ -1,10 +1,17 @@
 import express from 'express'
 import { RegisterController } from '../register.controller.js'
+import {
+    AuthenticateController,
+    ProfileController
+} from './index.js'
 
-const route = express.Router()
+const router = express.Router()
 
-route.post('/user', RegisterController) // Register a new User
+router.post('/user', RegisterController) // Register a new User
+router.post('/auth/user', AuthenticateController) // Authenticate a user
+
+router.get('/user/profile', ProfileController) // Get User Profile (User should is authenticated)
 
 export {
-    route as UserRoutes //Rename route to UserRoutes and export it (reference: app.js)
+    router as UserRoutes //Rename route to UserRoutes and export it (reference: app.js)
 }
