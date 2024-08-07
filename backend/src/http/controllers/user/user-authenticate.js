@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import MakeAuth from '../../../commands/factories/user/makeAuth.js'
+import JWTPrismaRepository from '../../../repositories/prisma/JwtPrismaRepository.js'
 
 const JWT_PAYLOAD = process.env?.JWT_PAYLOAD
 
@@ -37,6 +38,8 @@ export async function AuthenticateController(req, res) {
         }, JWT_PAYLOAD, {
             expiresIn: '7d'
         })
+
+        await new JWTPrismaRepository().storeRefreshToken(user.id, refreshToken)
 
         res
             .cookie('refreshToken', refreshToken, {
