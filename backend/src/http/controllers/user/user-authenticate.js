@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import MakeAuth from '../../../commands/factories/user/makeAuth.js'
 
 const JWT_PAYLOAD = process.env?.JWT_PAYLOAD
@@ -9,7 +9,6 @@ export async function AuthenticateController(req, res) {
         const { registration, password } = req.body
 
         const makeAuth = MakeAuth()
-
         const { user } = await makeAuth.execute({
             registration,
             password
@@ -60,8 +59,9 @@ export async function AuthenticateController(req, res) {
             auth: true,
             message: "Authenticated",
             ...user,
-            password_hash: undefined
+            password: undefined
         })
+
     } catch (err) {
         res
             .status(400)
@@ -70,4 +70,5 @@ export async function AuthenticateController(req, res) {
                 status: 400
             })
     }
+
 }
