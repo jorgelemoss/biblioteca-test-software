@@ -9,6 +9,3 @@ node_modules
 
 ./rest.http
 
-pnpm-lock.yaml
-npm-lock.json
-yarn.lock
