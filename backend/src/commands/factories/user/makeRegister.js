@@ -1,5 +1,5 @@
-import UserPrismaRepository from '../../repositories/prisma/UserPrismaRepository.js'
-import RegisterCommand from '../register.command.js'
+import UserPrismaRepository from '../../../repositories/prisma/UserPrismaRepository.js'
+import RegisterCommand from '../../register.command.js'
 
 
 export default function MakeRegister() {

@@ -5,6 +5,22 @@ const prisma = new PrismaClient()
 
 export default class UserPrismaRepository {
 
+    async findByRegistration(registration) { // Find user by registration
+        try {
+            const user = await prisma.user.findUnique({
+                where: {
+                    registration
+                }
+            })
+
+            return user
+
+        } catch (err) {
+            throw errors.findByRegistrationError
+
+        }
+    }
+
     async findByEmail(email) { // Find user by email
         try {
             const user = await prisma.user.findUnique({

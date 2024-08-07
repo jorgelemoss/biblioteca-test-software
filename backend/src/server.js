@@ -1,9 +1,13 @@
 /** Imports */
+import dotenv from 'dotenv'
+dotenv.config()
+
 import http from 'node:http'
 import { app } from './app.js'
 import { errors } from './errors/serverErrors.js'
 
-const PORT = process.env?.PORT || 4000 // Port necessary for server
+
+const PORT = process.env?.PORT // Port necessary for server
 
 const server = http.createServer(app) // Create a Express App Server with node http
 

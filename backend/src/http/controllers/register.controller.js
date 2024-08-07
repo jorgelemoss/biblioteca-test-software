@@ -1,4 +1,4 @@
-import makeRegister from '../../commands/factories/makeRegister.js'
+import MakeRegister from '../../commands/factories/user/makeRegister.js'
 
 export async function RegisterController(req, res) {
 
@@ -9,9 +9,9 @@ export async function RegisterController(req, res) {
             throw new Error("Missing user data, check the information")
         }
 
-        const MakeRegister = makeRegister()
+        const makeRegister = MakeRegister()
 
-        await MakeRegister.execute({ name, email, registration, password }) // Wait receive user data from register.command.js
+        await makeRegister.execute({ name, email, registration, password }) // Wait receive user data from register.command.js
 
         /**
          * If Register Command not have error, user create is success!

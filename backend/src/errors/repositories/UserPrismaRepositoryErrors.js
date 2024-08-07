@@ -1,3 +1,10 @@
+class FindByRegistrationError extends Error {
+    constructor() {
+        super("Error on try find user registration.")
+        this.name = "FindByRegistrationError"
+    }
+}
+
 class FindByEmailError extends Error {
     constructor() {
         super("Error on try find user email.")
@@ -14,5 +21,6 @@ class CreateUserError extends Error {
 
 export const errors = {
     findByEmailError: new FindByEmailError(),
-    createUserError: new CreateUserError()
+    createUserError: new CreateUserError(),
+    findByRegistrationError: new FindByRegistrationError()
 }
