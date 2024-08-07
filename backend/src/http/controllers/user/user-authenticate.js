@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import MakeAuth from '../../../commands/factories/user/makeAuth.js'
 import JWTPrismaRepository from '../../../repositories/prisma/JwtPrismaRepository.js'
 
-const JWT_PAYLOAD = process.env?.JWT_PAYLOAD
+const JWT_SECRET = process.env?.JWT_SECRET
 
 export async function AuthenticateController(req, res) {
 
@@ -23,7 +23,7 @@ export async function AuthenticateController(req, res) {
                 registration: user.registration,
                 password: undefined
             }
-        }, JWT_PAYLOAD, {
+        }, JWT_SECRET, {
             expiresIn: '1h'
         })
 
@@ -35,7 +35,7 @@ export async function AuthenticateController(req, res) {
                 registration: user.registration,
                 password: undefined
             }
-        }, JWT_PAYLOAD, {
+        }, JWT_SECRET, {
             expiresIn: '7d'
         })
 

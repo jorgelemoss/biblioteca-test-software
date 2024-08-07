@@ -4,6 +4,10 @@ prisma/dev.db-journal
 
 node_modules
 .env
+.env.development
+.env.production
+
+rest.http
 
 pnpm-lock.yaml
 npm-lock.json
