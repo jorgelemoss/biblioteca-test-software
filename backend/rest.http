@@ -2,10 +2,10 @@
 # Content-Type: application/json
 
 # {
-#     "name":"Jorge", 
-#     "email":"test", 
-#     "registration":"test", 
-#     "password":"test"
+#     "name":"", 
+#     "email":"", 
+#     "registration":"", 
+#     "password":""
 # }
 
 
@@ -13,6 +13,6 @@ POST http://localhost:4000/auth/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "registration":"test", 
-    "password":"test"
+    "registration":"", 
+    "password":""
 }
