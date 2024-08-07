@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
+import { env } from '../../../env/index'
 
-const JWT_SECRET = process.env?.JWT_SECRET
+const JWT_SECRET = env.JWT_SECRET
 
 export const VerifyJWT = (req, res, next) => {
 

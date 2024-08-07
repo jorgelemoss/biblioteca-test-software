@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken'
 import MakeAuth from '../../../commands/factories/user/makeAuth.js'
 import JWTPrismaRepository from '../../../repositories/prisma/JwtPrismaRepository.js'
+import { env } from '../../../env/index.js'
 
-const JWT_SECRET = process.env?.JWT_SECRET
+const JWT_SECRET = env.JWT_SECRET
 
 export async function AuthenticateController(req, res) {
 
