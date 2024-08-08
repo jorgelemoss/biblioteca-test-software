@@ -1,3 +1,5 @@
 export function ProfileController(req, res) {
-    res.send("Hello World")
+    const data = req.user
+
+    console.log(data)
 }

@@ -8,7 +8,6 @@ export const VerifyJWT = (req, res, next) => {
     try {
         const { accessToken } = req.cookies
 
-
         if (!accessToken) {
             throw new Error("Not have token")
         }
