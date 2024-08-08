@@ -1,7 +1,9 @@
-export function navbar() {
-    return (
-        <nav>
+import NavbarStyle from './navbar.module.css'
 
-        </nav>
+export function Navbar() {
+    return (
+        <header className={[NavbarStyle.navbar]}>
+
+        </header>
     )
 }

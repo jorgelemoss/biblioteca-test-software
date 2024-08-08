@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
-import GuestLayout from '../components/_layouts/GuestLayout'
-import Home from '../pages/home'
+import GuestLayout from '@pages/_layouts/GuestLayout'
+import Home from '@pages/home'
 
 export const routes = createBrowserRouter([
     {
