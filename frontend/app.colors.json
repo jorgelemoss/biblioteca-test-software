@@ -24,6 +24,10 @@
         "button": {
             "bg": "#5c6ac4",
             "text": "#ffffff"
+        },
+        "link": {
+            "text": "#000000",
+            "text_hover": "#323c99"
         }
     }
 }
