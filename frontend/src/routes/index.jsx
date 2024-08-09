@@ -1,6 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
-import GuestLayout from '@pages/_layouts/GuestLayout'
-import Home from '@pages/home'
+import {
+    GuestLayout,
+    Home,
+    SignIn
+} from '@pages/index'
 
 export const routes = createBrowserRouter([
     {
@@ -10,6 +13,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/auth/sign-in',
+                element: <SignIn />
             }
         ]
     }

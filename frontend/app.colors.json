@@ -1,0 +1,22 @@
+{
+    "navbar": {
+        "bg": "#5c6ac4",
+        "brand": "#ffffff",
+        "button": {
+            "bg": "#49519c ",
+            "text": "#ffffff",
+            "hover": "#323c99"
+        }
+    },
+    "content": {
+        "title": "#5c6ac4",
+        "text": ""
+    },
+    "form": {
+        "input": {
+            "bg": "#5c6ac4",
+            "text": "#ffffff"
+        },
+        "button": {}
+    }
+}
