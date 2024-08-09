@@ -3,7 +3,7 @@ import { cn } from '@utils/clsx'
 
 function FormRoot({ children, ...props }) {
     return (
-        <form {...props} className={cn(`flex flex-col w-3/12 space-y-2`, props.className)}>
+        <form {...props} className={cn(`bg-form-bg rounded-sm px-14 py-28  flex flex-col w-auto md:w-4/12 space-y-3`, props.className)}>
             {children}
         </form>
     )

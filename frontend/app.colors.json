@@ -3,7 +3,7 @@
         "bg": "#5c6ac4",
         "brand": "#ffffff",
         "button": {
-            "bg": "#49519c ",
+            "bg": "#49519c",
             "text": "#ffffff",
             "hover": "#323c99"
         }
@@ -13,10 +13,17 @@
         "text": ""
     },
     "form": {
+        "bg": "#d7d9de",
+        "header": {
+            "title": "#5c6ac4"
+        },
         "input": {
-            "bg": "#5c6ac4",
+            "bg": "#747fc4",
             "text": "#ffffff"
         },
-        "button": {}
+        "button": {
+            "bg": "#5c6ac4",
+            "text": "#ffffff"
+        }
     }
 }
