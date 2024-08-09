@@ -22,16 +22,14 @@ function SignIn() {
         try {
             setLoading(true)
 
-            const { data } = await login('/auth/user', {
+            const { data } = await login({
                 registration: user.registration,
                 password: user.password
             })
 
             console.log(data)
         } catch (err) {
-            if (err.response.data.err === 400) {
-                console.log(err)
-            }
+            console.log(err)
         } finally {
             setLoading(false)
             setUser({

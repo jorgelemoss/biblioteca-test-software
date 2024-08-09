@@ -9,9 +9,10 @@ import { VerifyJWT } from '../../middlewares/jwt/VerifyJWT.js'
 const router = express.Router()
 
 router.post('/user', RegisterController) // Register a new User
-router.post('/auth/user', AuthenticateController) // Authenticate a user
 
-router.get('/user/profile', [VerifyJWT], ProfileController) // Get User Profile (User should is authenticated)
+router.post('/auth', AuthenticateController) // Authenticate a user
+
+router.get('/me', [VerifyJWT], ProfileController) // Get User Profile (User should is authenticated)
 
 export {
     router as UserRoutes //Rename route to UserRoutes and export it (reference: app.js)

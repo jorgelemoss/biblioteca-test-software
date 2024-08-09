@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { env } from '../../../env/index'
+import { env } from '../../../env/index.js'
 
 const JWT_SECRET = env.JWT_SECRET
 

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import { GuestRoute } from '@routes/GuestRoute'
 import {
     GuestLayout,
     Home,
@@ -8,7 +9,7 @@ import {
 export const routes = createBrowserRouter([
     {
         path: '/',
-        element: <GuestLayout />,
+        element: <GuestRoute><GuestLayout /></GuestRoute>,
         children: [
             {
                 path: '/',
@@ -19,5 +20,9 @@ export const routes = createBrowserRouter([
                 element: <SignIn />
             }
         ]
+    },
+    {
+        path: '*',
+        element: <h1 className='text-black'>Not Found</h1>
     }
 ])

@@ -1,13 +1,28 @@
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setAuth } from '../redux/user/userSlice'
+import { get_profile } from '@api/index'
 
-// export const useLoadingRefresh = () => {
+export const useLoadingRefresh = () => {
 
-//     const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
-//     useEffect(() => {
-//         (async () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        (async () => {
+            try {
+                const { data } = await get_profile()
+                dispatch(setAuth(data))
+            } catch (err) {
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
+        })
+    }, [dispatch])
 
-//         })
-//     }, [])
+    return {
+        loading
+    }
 
-// }
+}
