@@ -21,6 +21,16 @@ export default class UserPrismaRepository {
         }
     }
 
+    async findById(id) {
+        const user = await prisma.user.findUnique({
+            where: {
+                id
+            }
+        })
+
+        return user
+    }
+
     async findByEmail(email) { // Find user by email
         try {
             const user = await prisma.user.findUnique({

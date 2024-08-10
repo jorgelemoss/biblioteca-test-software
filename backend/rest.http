@@ -1,18 +1,18 @@
-# POST http://localhost:4000/api/user HTTP/1.1
-# Content-Type: application/json
-
-# {
-#     "name":"", 
-#     "email":"", 
-#     "registration":"", 
-#     "password":""
-# }
-
-
-POST http://localhost:4000/api/auth HTTP/1.1
+POST http://localhost:4000/api/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "registration":"", 
-    "password":""
+    "name":"Jorge Lemos", 
+    "email":"teste@discente.ifpe.edu.br", 
+    "registration":"20192ADSPL1234", 
+    "password":"12345678"
 }
+
+
+# POST http://localhost:4000/api/auth HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "registration":"", 
+#     "password":""
+# }

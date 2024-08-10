@@ -49,7 +49,7 @@ function SignIn() {
                     <Form.FormInput
                         name="registering"
                         aria-describedby="matricula"
-                        type="email"
+                        type="text"
                         value={user.registration}
                         onChange={(e) => setUser({ ...user, registration: e.target.value })}
                         placeholder={"2024ADSPL0000"}
