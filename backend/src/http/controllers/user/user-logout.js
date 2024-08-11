@@ -8,12 +8,7 @@ export async function LogoutController(req, res) {
 
         const { refreshToken } = req.cookies
 
-        try {
-            await new JwtPrismaRepository().removeTokenFromDb(refreshToken)
-        } catch (err) {
-            console.log("Deu erro aq")
-        }
-
+        await new JwtPrismaRepository().removeTokenFromDb(refreshToken)
 
         res.clearCookie('refreshToken', { sameSite: "none", secure: true })
         res.clearCookie('accessToken', { sameSite: "none", secure: true })

@@ -12,7 +12,6 @@ export const useLoadingRefresh = () => {
         (async () => {
             try {
                 const { data } = await get_profile()
-                console.log(data)
                 dispatch(setAuth(data))
             } catch (err) {
                 console.log(err)

@@ -2,6 +2,7 @@
 import {
     navbar,
     content,
+    dashboard,
     form
 } from './app.colors.json'
 
@@ -24,6 +25,7 @@ export default {
             colors: {
                 navbar,
                 content,
+                dashboard,
                 form,
                 primary: "#5c6ac4",
                 secondary: "#ecc94b"

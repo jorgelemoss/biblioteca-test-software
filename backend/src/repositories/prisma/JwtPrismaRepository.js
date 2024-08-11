@@ -5,29 +5,16 @@ const prisma = new PrismaClient()
 export default class JWTPrismaRepository {
 
     async removeTokenFromDb(refreshToken) {
-        const removeToken = await prisma.account.delete({
+        const removeToken = await prisma.account.deleteMany({
             where: {
-                refreshToken
-            }
+                refreshToken,
+            },
         })
 
         return removeToken
     }
 
     async storeRefreshToken(userId, refreshToken) {
-
-        const storeToken = await prisma.account.create({
-            data: {
-                refreshToken,
-                user: {
-                    connect: {
-                        id: userId
-                    }
-                }
-            }
-        })
-
-        return storeToken
 
         // const userAccount = await prisma.account.findUnique({
         //     where: { userId }
@@ -52,6 +39,18 @@ export default class JWTPrismaRepository {
         //         }
         //     })
 
+        const storeToken = await prisma.account.create({
+            data: {
+                refreshToken,
+                user: {
+                    connect: {
+                        id: userId
+                    }
+                }
+            }
+        })
+
+        return storeToken
 
     }
 

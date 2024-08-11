@@ -1,5 +1,7 @@
 import { Form } from '@components/index.components'
 import { login } from '@api/index'
+import { useDispatch } from 'react-redux'
+import { setAuth } from '../../redux/user/userSlice'
 import {
     LoaderCircle
 } from 'lucide-react'
@@ -15,6 +17,8 @@ function SignIn() {
         password: ""
     })
 
+    const dispatch = useDispatch()
+
     const handleLogin = async (e) => {
 
         e.preventDefault()
@@ -27,9 +31,9 @@ function SignIn() {
                 password: user.password
             })
 
-            console.log(data)
+            dispatch(setAuth(data))
         } catch (err) {
-            console.log(err)
+            console.log(err.response.data.err)
         } finally {
             setLoading(false)
             setUser({

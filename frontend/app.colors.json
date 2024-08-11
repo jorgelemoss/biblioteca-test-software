@@ -2,6 +2,12 @@
     "navbar": {
         "bg": "#5c6ac4",
         "brand": "#ffffff",
+        "profile": {
+            "text": "#ffffff",
+            "image": {
+                "bg": "#323c99"
+            }
+        },
         "button": {
             "bg": "#49519c",
             "text": "#ffffff",
@@ -11,6 +17,17 @@
     "content": {
         "title": "#5c6ac4",
         "text": ""
+    },
+    "dashboard": {
+        "sidebar": {
+            "bg": "#8d9bf0",
+            "border": "#5c6ac4",
+            "links": {
+                "bg": "#a0aaf2",
+                "text": "#ffffff",
+                "icons": "#ffffff"
+            }
+        }
     },
     "form": {
         "bg": "#d7d9de",

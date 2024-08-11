@@ -1,6 +1,5 @@
 import { RouterProvider } from 'react-router-dom'
 import { routes } from '@routes/index'
-
 import { useLoadingRefresh } from './hooks/useLoadingRefresh'
 
 function App() {
