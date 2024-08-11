@@ -8,6 +8,7 @@ import {
     Dashboard,
     SignIn
 } from '@pages/index'
+import { AppScreens } from '../pages/app/index.app'
 
 export const routes = createBrowserRouter([
     {
@@ -29,8 +30,14 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute><AppLayout /></PrivateRoute>,
         children: [
             {
-                path: '/main/user',
-                element: <Dashboard />
+                path: '/main/user/',
+                element: <Dashboard />,
+                children: [
+                    {
+                        path: 'home',
+                        element: <AppScreens.AppHomePage />
+                    }
+                ]
             }
         ]
     },

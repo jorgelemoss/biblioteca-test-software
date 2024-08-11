@@ -24,6 +24,7 @@
             "border": "#5c6ac4",
             "links": {
                 "bg": "#a0aaf2",
+                "hover": "#5c6ac4",
                 "text": "#ffffff",
                 "icons": "#ffffff"
             }
