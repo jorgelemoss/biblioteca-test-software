@@ -34,9 +34,21 @@ export const routes = createBrowserRouter([
                 element: <Dashboard />,
                 children: [
                     {
-                        path: 'home',
-                        element: <AppScreens.AppHomePage />
-                    }
+                        path: 'my-account',
+                        element: <AppScreens.AppMyAccount />
+                    }, {
+                        path: 'favorites',
+                        element: <AppScreens.AppFavorites />
+                    }, {
+                        path: 'recents',
+                        element: <AppScreens.AppRecents />
+                    }, {
+                        path: 'wish-list',
+                        element: <AppScreens.AppWishList />
+                    }, {
+                        path: 'faq',
+                        element: <AppScreens.AppFaq />
+                    },
                 ]
             }
         ]

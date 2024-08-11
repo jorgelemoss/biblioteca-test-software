@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import {
     navbar,
-    content,
+    home,
     dashboard,
     form
 } from './app.colors.json'
@@ -24,7 +24,7 @@ export default {
             },
             colors: {
                 navbar,
-                content,
+                home,
                 dashboard,
                 form,
                 primary: "#5c6ac4",

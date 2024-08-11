@@ -1,50 +1,54 @@
 {
     "navbar": {
-        "bg": "#5c6ac4",
+        "bg": "#1f2937",
         "brand": "#ffffff",
         "profile": {
             "text": "#ffffff",
             "image": {
-                "bg": "#323c99"
+                "bg": "#374151"
             }
         },
         "button": {
-            "bg": "#49519c",
+            "bg": "#374151",
             "text": "#ffffff",
-            "hover": "#323c99"
+            "hover": "#374151"
         }
     },
-    "content": {
-        "title": "#5c6ac4",
+    "home": {
+        "bg": "#111827",
+        "title": "#ffffff",
         "text": ""
     },
     "dashboard": {
         "sidebar": {
-            "bg": "#8d9bf0",
-            "border": "#5c6ac4",
+            "bg": "#374151",
+            "border": "#1f2937",
             "links": {
-                "bg": "#a0aaf2",
-                "hover": "#5c6ac4",
+                "bg": "#1f2937",
+                "hover": "#111827",
                 "text": "#ffffff",
                 "icons": "#ffffff"
             }
         }
     },
     "form": {
-        "bg": "#d7d9de",
+        "bg": "#1f2937",
+        "label": {
+            "text": "#ffffff"
+        },
         "header": {
-            "title": "#5c6ac4"
+            "title": "#4c5a70"
         },
         "input": {
-            "bg": "#747fc4",
+            "bg": "#374151",
             "text": "#ffffff"
         },
         "button": {
-            "bg": "#5c6ac4",
+            "bg": "#293445",
             "text": "#ffffff"
         },
         "link": {
-            "text": "#000000",
+            "text": "#ffffff",
             "text_hover": "#323c99"
         }
     }
