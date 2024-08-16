@@ -7,7 +7,7 @@ export function Navbar({ handleLogout }) {
     const { isAuth, user } = useSelector((state) => state.auth)
 
     return (
-        <header className="bg-navbar-bg fixed w-full flex items-center justify-between px-4 py-5">
+        <header className="bg-navbar-bg fixed w-full flex items-center justify-between px-4 py-5 z-50">
             <a href='/' className="text-navbar-brand font-medium text-base uppercase">Livraria</a>
             {isAuth ? (
                 <nav className='flex gap-3 items-center'>

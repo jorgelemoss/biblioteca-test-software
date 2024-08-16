@@ -62,7 +62,7 @@ function Dashboard() {
                 {current_path && (
                     <>
                         <section className='flex flex-col gap-5 items-center justify-center'>
-                            <h1 className='text-lg sm:text-5xl text-center w-[60%] bg-gradient-to-r bg-clip-text text-transparent from-[#4c5a70]  to-[#111827]  uppercase font-bold'>Boas Vindas ao Universo de Conhecimento.</h1>
+                            <h1 className='text-lg sm:text-5xl text-center w-[70%] bg-gradient-to-r bg-clip-text text-transparent from-[#4c5a70]  to-[#111827]  uppercase font-bold'>Boas Vindas ao Universo de Conhecimento.</h1>
                             <p className='w-[40%] text-center text-xs sm:text-base font-medium'>Como o universo se desdobra em mistérios sem fim, cada livro é um cosmos de conhecimento esperando para ser explorado.</p>
                             <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
