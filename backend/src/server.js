@@ -8,15 +8,17 @@ import { errors } from './errors/serverErrors.js'
 
 // const PORT = process.env?.PORT // Port necessary for server
 
-const server = http.createServer(app) // Create a Express App Server with node http
+export const server = http.createServer(app) // Create a Express App Server with node http
 
 /** Server is running on port */
-server.listen(env.PORT, () => {
-    try {
-        console.log(`Listening at port ${env.PORT} 🟢`)
+if (env.NODE_ENV !== "test") {
+    server.listen(env.PORT, () => {
+        try {
+            console.log(`Listening at port ${env.PORT} as a ${env.NODE_ENV} 🟢`)
 
-    } catch (err) {
-        throw errors.serverRunError
+        } catch (err) {
+            throw errors.serverRunError
 
-    }
-})
+        }
+    })
+}

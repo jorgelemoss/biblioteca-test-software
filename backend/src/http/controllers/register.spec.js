@@ -1,25 +1,34 @@
-import { beforeAll, afterAll, test, expect, describe } from "vitest";
-import request from 'supertest'
-import { app } from "../../app";
-import { env } from "../../env";
+import dotenv from "dotenv"
+dotenv.config({ path: '.env.test' })
 
-let server
+import { beforeAll, afterAll, test, expect, describe, it } from "vitest";
+import request from 'supertest'
+import { env } from "../../env";
+import { server } from "../../server";
 
 describe('Register', () => {
 
-    beforeAll((done) => {
-        server = app.listen(env.PORT, () => {
-            console.log(`Server test is running on ${env.PORT}`)
-            done()
+    beforeAll(() => {
+        server.listen(env.PORT, () => {
+            console.log(`Server test is running on ${env.PORT} as a ${env.NODE_ENV}`)
         })
     })
 
     afterAll(() => {
         server.close()
     })
-})
 
-test('Should make a register request', async () => {
-    const res = await request(server).post('/api/user')
-    expect(res.status).toBe(200)
+    it('Should be register', async () => {
+        const res = await request(server)
+            .post('/api/user')
+            .send({
+                "name": "John Doe",
+                "email": "johndoe@discente.ifpe.edu.br",
+                "registration": "20241ADSPL0000",
+                "password": "12345678"
+            })
+            .set('Accept', 'application/json')
+
+        expect(res.statusCode).toEqual(200)
+    })
 })
