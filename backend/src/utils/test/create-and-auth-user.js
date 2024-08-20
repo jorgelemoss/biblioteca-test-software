@@ -5,6 +5,17 @@ import { server } from '../../server.js'
 
 export const createAndAuthUser = async () => {
 
+    const user = await prisma.user.findUnique({
+        where: {
+            email: "johndoe@discente.ifpe.edu.br",
+            registration: "20241ADSPL0000"
+        }
+    })
+
+    if (user) {
+        throw new Error("User Already Exists")
+    }
+
     const hashed_password = await bcrypt.hash('12345678', 10)
 
     await prisma.user.create({
@@ -24,7 +35,7 @@ export const createAndAuthUser = async () => {
         })
 
 
-    const refreshToken = authResponse.headers['set-cookie']
+    const refreshToken = authResponse.headers['Set-Cookie']
 
     return refreshToken
 }
