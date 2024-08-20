@@ -3,8 +3,8 @@ dotenv.config({ path: '.env.test' })
 
 import { beforeAll, afterAll, test, expect, describe, it } from "vitest";
 import request from 'supertest'
-import { env } from "../../env";
-import { server } from "../../server";
+import { env } from "../../../env";
+import { server } from "../../../server";
 
 describe('Register', () => {
 
