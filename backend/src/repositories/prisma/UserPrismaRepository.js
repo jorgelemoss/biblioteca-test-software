@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '../../lib/prisma.js'
 import { errors } from '../../errors/repositories/UserPrismaRepositoryErrors.js'
-
-const prisma = new PrismaClient()
 
 export default class UserPrismaRepository {
 

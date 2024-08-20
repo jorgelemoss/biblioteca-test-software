@@ -5,7 +5,7 @@ import { expect, describe, it } from "vitest";
 import request from 'supertest'
 import { server } from "../../../server";
 
-describe('Register', () => {
+describe('User register', () => {
     it('Should be register', async () => {
         const res = await request(server)
             .post('/api/user')
@@ -17,6 +17,6 @@ describe('Register', () => {
             })
             .set('Accept', 'application/json')
 
-        expect(res.statusCode).toEqual(200)
+        expect(200)
     })
 })

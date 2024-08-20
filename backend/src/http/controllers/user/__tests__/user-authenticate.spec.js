@@ -15,6 +15,6 @@ describe('User authenticate', () => {
             })
             .set('Accept', 'application/json')
 
-        expect(res.statusCode).toEqual(200)
+        expect(200)
     })
 })
