@@ -1,25 +1,11 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import dotenv from 'dotenv'
+dotenv.config({ path: '.env.test' })
+
+import { describe, expect, it } from "vitest";
 import request from 'supertest'
 import { server } from "../../../../server";
-import { env } from "../../../../env";
-
 
 describe('User authenticate', () => {
-    beforeAll((done) => {
-        if (!server.listening) {  // Garantir que o servidor seja iniciado uma única vez
-            server.listen(process.env.PORT, () => {
-                console.log(`Test server running on port ${process.env.PORT}`);
-                done();
-            });
-        } else {
-            done();
-        }
-    })
-
-    afterAll(() => {
-        server.close()
-    })
-
     it('POST /api/auth', async () => {
         const res = await request(server)
             .post('/api/auth')
