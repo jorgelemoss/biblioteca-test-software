@@ -4,9 +4,9 @@ import { registerSchema } from '../../schemas/UserSchema.js'
 export async function RegisterController(req, res) {
 
     try {
-        const { name, email, registration, password } = registerSchema.parse(req.body) // Get user data from client
+        const { name, email, registration, password } = registerSchema.parse(req.body) // Get user data from client input
 
-        const makeRegister = MakeRegister()
+        const makeRegister = MakeRegister() // Use value returned into MakeRegister()
 
         await makeRegister.execute({ name, email, registration, password }) // Wait receive user data from register.command.js
 

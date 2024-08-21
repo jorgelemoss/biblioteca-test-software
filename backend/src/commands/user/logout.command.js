@@ -1,6 +1,6 @@
-import { errors } from '../errors/commands/ProfileCommandError.js'
+import { errors } from '../../errors/commands/LogoutCommandError.js'
 
-export default class ProfileCommand {
+export default class LogoutCommand {
 
     #userRepository
 
@@ -12,7 +12,7 @@ export default class ProfileCommand {
         const user = await this.#userRepository.findById(id)
 
         if (!user) {
-            throw errors.userNotExists
+            throw errors.logoutError
         }
 
         return { user }

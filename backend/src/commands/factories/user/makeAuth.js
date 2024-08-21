@@ -1,5 +1,5 @@
 import UserPrismaRepository from '../../../repositories/prisma/UserPrismaRepository.js'
-import AuthenticateCommand from '../../authenticate.command.js'
+import AuthenticateCommand from '../../user/authenticate.command.js'
 
 export default function MakeAuth() {
     const userPrismaRepository = new UserPrismaRepository()

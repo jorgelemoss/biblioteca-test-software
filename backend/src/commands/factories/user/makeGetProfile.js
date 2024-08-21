@@ -1,5 +1,5 @@
 import UserPrismaRepository from '../../../repositories/prisma/UserPrismaRepository.js'
-import ProfileCommand from '../../profile.command.js'
+import ProfileCommand from '../../user/profile.command.js'
 
 
 export default function MakeGetProfile() {

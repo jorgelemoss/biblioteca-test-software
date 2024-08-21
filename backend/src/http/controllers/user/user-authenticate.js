@@ -9,15 +9,16 @@ const JWT_SECRET = env.JWT_SECRET
 export async function AuthenticateController(req, res) {
 
     try {
-        const { registration, password } = authenticateSchema.parse(req.body)
+        const { registration, password } = authenticateSchema.parse(req.body) // Get user data from client input
 
-        const makeAuth = MakeAuth()
-        const { user } = await makeAuth.execute({
+        const makeAuth = MakeAuth()// Use value returned into MakeAuth()
+
+        const { user } = await makeAuth.execute({ // Get returned data
             registration,
             password
         })
 
-        const accessToken = jwt.sign({
+        const accessToken = jwt.sign({ // Create a token to accessToken with user data
             sub: {
                 id: user.id,
                 name: user.name,
@@ -29,7 +30,7 @@ export async function AuthenticateController(req, res) {
             expiresIn: '1h'
         })
 
-        const refreshToken = jwt.sign({
+        const refreshToken = jwt.sign({ // Create a token to refreshToken with user data
             sub: {
                 id: user.id,
                 name: user.name,
@@ -41,7 +42,7 @@ export async function AuthenticateController(req, res) {
             expiresIn: '7d'
         })
 
-        await new JWTPrismaRepository().storeRefreshToken(user.id, refreshToken)
+        await new JWTPrismaRepository().storeRefreshToken(user.id, refreshToken) // Await JWTPrismaRepository storage refreshtoken (Which is what we need)
 
         res
             .cookie('refreshToken', refreshToken, {
@@ -49,7 +50,7 @@ export async function AuthenticateController(req, res) {
                 httpOnly: true,
                 sameSite: 'none',
                 secure: true
-            })
+            }) // Create a cookie response with refreshToken token
 
         res
             .cookie('accessToken', accessToken, {
@@ -57,7 +58,7 @@ export async function AuthenticateController(req, res) {
                 httpOnly: true,
                 sameSite: 'none',
                 secure: true
-            })
+            }) // Create a cookie response with accessToken token
 
 
         res.status(200).json({

@@ -15,7 +15,7 @@ router.post('/auth', AuthenticateController) // Authenticate a user
 
 router.get('/me', [VerifyJWT], ProfileController) // Get User Profile (User should is authenticated)
 
-router.get('/logout', [VerifyJWT], LogoutController)
+router.get('/logout', [VerifyJWT], LogoutController) // Log the user out (User should is authenticated)
 
 export {
     router as UserRoutes //Rename route to UserRoutes and export it (reference: app.js)

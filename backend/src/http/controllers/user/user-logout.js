@@ -3,17 +3,17 @@ import JwtPrismaRepository from '../../../repositories/prisma/JwtPrismaRepositor
 
 export async function LogoutController(req, res) {
     try {
-        const makeLogout = MakeLogout()
-        await makeLogout.execute({ id: req.user.sub.id })
+        const makeLogout = MakeLogout() // Use value returned into MakeLogout()
+        await makeLogout.execute({ id: req.user.sub.id }) // Get user data from token destructured into req.user (reference: VerifyJWT.js)
 
-        const { refreshToken } = req.cookies
+        const { refreshToken } = req.cookies // Get refreshToken cookie from frontend
 
-        await new JwtPrismaRepository().removeTokenFromDb(refreshToken)
+        await new JwtPrismaRepository().removeTokenFromDb(refreshToken) // Remove refreshToken from currently user
 
-        res.clearCookie('refreshToken', { sameSite: "none", secure: true })
-        res.clearCookie('accessToken', { sameSite: "none", secure: true })
+        res.clearCookie('refreshToken', { sameSite: "none", secure: true }) // Remove refreshToken from frontend
+        res.clearCookie('accessToken', { sameSite: "none", secure: true })// Remove accessToken from frontend
 
-        res
+        res // Return a new data with user unanthenticated
             .status(200)
             .send({
                 auth: false,

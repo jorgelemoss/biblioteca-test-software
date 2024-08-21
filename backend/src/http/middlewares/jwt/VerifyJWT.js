@@ -1,26 +1,28 @@
 import jwt from 'jsonwebtoken'
 import { env } from '../../../env/index.js'
 
+/** That is a @middleware */
+
 const JWT_SECRET = env.JWT_SECRET
 
 export const VerifyJWT = (req, res, next) => {
 
     try {
-        const { accessToken } = req.cookies
+        const { accessToken } = req.cookies // Get accessTokem cookie from frontend
 
-        if (!accessToken) {
+        if (!accessToken) { // If accessToken is null
             throw new Error("Not have token")
         }
 
-        const userData = jwt.verify(accessToken, JWT_SECRET)
+        const userData = jwt.verify(accessToken, JWT_SECRET) // Destructure accessToken with secret
 
-        if (!userData) {
+        if (!userData) { // // If userData is null
             throw new Error("Not have a user data")
         }
 
-        req.user = userData
+        req.user = userData // Req user catch user data from userData
 
-        next()
+        next() // Continue with operations from currently route 
 
     } catch (err) {
         res

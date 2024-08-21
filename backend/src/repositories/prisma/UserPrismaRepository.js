@@ -7,7 +7,7 @@ export default class UserPrismaRepository {
         try {
             const user = await prisma.user.findUnique({
                 where: {
-                    registration
+                    registration // Find user registration in User Model
                 }
             })
 
@@ -19,10 +19,10 @@ export default class UserPrismaRepository {
         }
     }
 
-    async findById(id) {
+    async findById(id) { // Find user by id
         const user = await prisma.user.findUnique({
             where: {
-                id
+                id // Find user id in User Model
             }
         })
 
@@ -33,7 +33,7 @@ export default class UserPrismaRepository {
         try {
             const user = await prisma.user.findUnique({
                 where: {
-                    email
+                    email // Find user email in User Model
                 }
             })
 
@@ -45,9 +45,9 @@ export default class UserPrismaRepository {
         }
     }
 
-    async create(data) { // Create a new user
+    async create(data) { // Catch input values
         try {
-            const user = await prisma.user.create({
+            const user = await prisma.user.create({ // Create a new user with values from data 
                 data
             })
 

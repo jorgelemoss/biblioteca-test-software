@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { errors } from '../errors/commands/AuthCommandError.js'
+import { errors } from '../../errors/commands/AuthCommandError.js'
 
 export default class AuthenticateCommand {
     #userRepository

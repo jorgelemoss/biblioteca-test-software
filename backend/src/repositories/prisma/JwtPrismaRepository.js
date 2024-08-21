@@ -3,7 +3,7 @@ import { prisma } from '../../lib/prisma.js'
 export default class JWTPrismaRepository {
 
     async removeTokenFromDb(refreshToken) {
-        const removeToken = await prisma.account.deleteMany({
+        const removeToken = await prisma.account.deleteMany({ // Remove refreshToken from user specified
             where: {
                 refreshToken,
             },
@@ -14,30 +14,7 @@ export default class JWTPrismaRepository {
 
     async storeRefreshToken(userId, refreshToken) {
 
-        // const userAccount = await prisma.account.findUnique({
-        //     where: { userId }
-        // })
-
-        // if (userAccount) {
-        //     const storeToken = await prisma.account.update({
-        //         where: { userId },
-        //         data: { refreshToken }
-        //     })
-
-        //     return storeToken
-        // } else {
-        //     const storeToken = await prisma.account.create({
-        //         data: {
-        //             refreshToken,
-        //             user: {
-        //                 connect: {
-        //                     id: userId
-        //                 }
-        //             }
-        //         }
-        //     })
-
-        const storeToken = await prisma.account.create({
+        const storeToken = await prisma.account.create({ // Store refreshToken into user specified
             data: {
                 refreshToken,
                 user: {

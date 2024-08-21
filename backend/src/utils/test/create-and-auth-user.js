@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt'
 import request from 'supertest'
 import { server } from '../../server.js'
 
+/** Used only for @Tests */
+
 export const createAndAuthUser = async () => {
 
     const user = await prisma.user.findUnique({

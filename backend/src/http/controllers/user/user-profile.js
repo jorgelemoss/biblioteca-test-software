@@ -4,9 +4,12 @@ export async function ProfileController(req, res) {
     try {
         const userData = req.user
 
-        const makeGetProfile = MakeGetProfile()
+        const makeGetProfile = MakeGetProfile() // Use value returned into MakeGetProfile()
 
-        const { user } = await makeGetProfile.execute({ id: userData.sub.id })
+        const { user } = await makeGetProfile.execute({ id: userData.sub.id }) // Get user data from token destructured into req.user (reference: VerifyJWT.js)
+
+
+        /** If success, return user data and allow auth */
 
         res
             .status(200)
