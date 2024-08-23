@@ -19,6 +19,15 @@ model User {
     role         String?   @default("User")
     image        String?   @default("https://ingresso.ifpe.edu.br/static/img/ifpe-logo.svg")
     accounts     Account[]
+    logs         Logs[]
+}
+
+model Logs {
+    id          Int     @id @default(autoincrement())
+    userId      Int
+    title       String?
+    description String?
+    user        User    @relation(fields: [userId], references: [id])
 }
 
 model Account {

@@ -56,9 +56,14 @@ function SignIn() {
 
 
     return (
-        <main className="bg-[#374151] min-h-screen flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center">
             <Form.FormRoot className="mt-16">
-                <Form.FormHeader title={"Login"} />
+                <Form.FormHeader className="flex flex-col items-center" >
+                    <div>
+                        <img src="https://ingresso.ifpe.edu.br/static/img/ifpe-logo.svg" className="h-16" alt="IFPE Logo" />
+                    </div>
+                    <span className='font-bold text-lg text-center text-form-header-title'>Login</span>
+                </Form.FormHeader>
                 <Form.FormLabel htmlFor="registering">
                     <span>Matrícula</span>
                     <Form.FormInput

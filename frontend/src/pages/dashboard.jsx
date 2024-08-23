@@ -1,4 +1,5 @@
-import { Home, UserCog, Bookmark, Star, BookCopy, TableOfContents } from 'lucide-react'
+import { Home, UserCog, Bookmark, Star, BookCopy, TableOfContents, User } from 'lucide-react'
+import { useSelector } from 'react-redux'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
 function Dashboard() {
@@ -42,6 +43,8 @@ function Dashboard() {
         }
     ]
 
+    const { user } = useSelector((state) => state.auth)
+
     const location = useLocation()
 
     const current_path = location.pathname === "/main/user" || location.pathname === "/main/user/"
@@ -50,6 +53,12 @@ function Dashboard() {
         <section className="flex min-h-screen">
             <aside className="w-24 sm:w-52 px-4 py-4 bg-dashboard-sidebar-bg border-r-4 border-dashboard-sidebar-border">
                 <nav className="flex flex-col gap-4 mt-20">
+                    {user.role === "Admin" && (
+                        <Link to={"/main/user/user-management"} className='bg-dashboard-sidebar-links-bg hover:border-l-2 hover:bg-dashboard-sidebar-links-hover w-10 sm:w-auto px-1.5 py-2 rounded-sm flex items-center justify-center sm:justify-start gap-2'>
+                            <span><User width={20} className='text-dashboard-sidebar-links-icons' /></span>
+                            <h1 className="hover:underline hidden sm:block text-sm text-dashboard-sidebar-links-text">Gerenciar Usuarios</h1>
+                        </Link>
+                    )}
                     {Links.map((links) => (
                         <Link key={links.key} to={links.link} className='bg-dashboard-sidebar-links-bg hover:border-l-2 hover:bg-dashboard-sidebar-links-hover w-10 sm:w-auto px-1.5 py-2 rounded-sm flex items-center justify-center sm:justify-start gap-2'>
                             <span><links.icon width={20} className='text-dashboard-sidebar-links-icons' /></span>

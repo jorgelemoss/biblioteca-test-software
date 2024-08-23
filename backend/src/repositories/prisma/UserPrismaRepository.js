@@ -45,6 +45,38 @@ export default class UserPrismaRepository {
         }
     }
 
+    async deleteByEmail(email) {
+        try {
+            const user = await prisma.user.deleteMany({
+                where: {
+                    email
+                }
+            })
+
+            return user
+
+        } catch (err) {
+            throw errors.findByEmailError
+
+        }
+    }
+
+    async createLog(email, title, description) {
+        const log = await prisma.logs.create({
+            data: {
+                title,
+                description,
+                user: {
+                    connect: {
+                        email
+                    }
+                }
+            }
+        })
+
+        return log
+    }
+
     async create(data) { // Catch input values
         try {
             const user = await prisma.user.create({ // Create a new user with values from data 

@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import GuestRoute from '@routes/GuestRoute'
 import PrivateRoute from '@routes/PrivateRoute'
+
 import {
     GuestLayout,
     AppLayout,
@@ -8,7 +9,9 @@ import {
     Dashboard,
     SignIn
 } from '@pages/index'
-import { AppScreens } from '../pages/app/index.app'
+import { AppScreens, AdminScreens } from '../pages/app/index.app'
+import PrivateAdminRoute from './PrivateAdminRoute'
+
 
 export const routes = createBrowserRouter([
     {
@@ -45,6 +48,15 @@ export const routes = createBrowserRouter([
                     }, {
                         path: 'wish-list',
                         element: <AppScreens.AppWishList />
+                    }, {
+                        path: 'user-management',
+                        element: <PrivateAdminRoute><AppScreens.AppUserManagement /></PrivateAdminRoute>,
+                        children: [
+                            {
+                                path: "delete",
+                                element: <AdminScreens.AdminDelete />
+                            }
+                        ]
                     }, {
                         path: 'faq',
                         element: <AppScreens.AppFaq />
