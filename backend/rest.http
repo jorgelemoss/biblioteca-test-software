@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name":"John Doe", 
-    "email":"johndoe@discente.ifpe.edu.br", 
+    "email":"johndoe@doscente.ifpe.edu.br", 
     "registration":"20241ADSPL0000", 
     "password":"12345678"
 }
@@ -24,6 +24,6 @@ Content-Type: application/json
 # Content-Type: application/json
 
 # {
-#     "registration":"20241ADSPL0000", 
+#     "registration":"20241ADSPL0001", 
 #     "password":"12345678"
 # }

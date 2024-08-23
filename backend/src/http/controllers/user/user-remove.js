@@ -13,8 +13,6 @@ export async function UserRemoveController(req, res) {
 
         const { registration, email, title, description } = removeUser.parse(req.body)
 
-        console.log(registration, email, title, description)
-
         const { user_data } = await makeUserRemove.findUser(registration, email)
 
         await makeUserRemove.removeUser(user_data.email, user_admin.email, title, description)
