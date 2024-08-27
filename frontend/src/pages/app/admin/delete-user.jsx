@@ -1,5 +1,5 @@
 import { LoaderCircle } from "lucide-react"
-import { remove } from "../../../api/index.js"
+import { remove } from "@api/index.js"
 import { useState } from 'react'
 
 import { enqueueSnackbar } from 'notistack'

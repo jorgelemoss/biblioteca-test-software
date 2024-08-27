@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
-import { api } from "../../../api"
+import { api } from "@api/index.js"
 import { useParams, Link } from 'react-router-dom'
 
 function UserPage() {
