@@ -1,7 +1,7 @@
 import { Form } from '@components/index.components'
 import { login } from '@api/index'
 import { useDispatch } from 'react-redux'
-import { setAuth } from '../../redux/user/userSlice'
+import { setAuth } from '@redux/user/userSlice'
 import { enqueueSnackbar } from 'notistack'
 import {
     LoaderCircle

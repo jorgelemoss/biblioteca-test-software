@@ -1,5 +1,5 @@
 import { LoaderCircle } from "lucide-react"
-import { remove_user } from "../../../api/index.js"
+import { register } from "../../../api/index.js"
 import { useState } from 'react'
 
 import { enqueueSnackbar } from 'notistack'
@@ -10,10 +10,12 @@ function CreateUser() {
         name: "",
         email: "",
         registration: "",
-        password: ""
+        password: "",
+        confirmPassword: "",
     })
 
     const [loading, setLoading] = useState(false)
+
 
     const handleRemove = async () => {
 
@@ -21,7 +23,15 @@ function CreateUser() {
 
             setLoading(true)
 
-            const { data } = await remove_user({
+            if (user.password != user.confirmPassword) {
+                enqueueSnackbar(`Senhas não coincidem`, {
+                    variant: 'error'
+                })
+
+                throw new Error()
+            }
+
+            const { data } = await register({
                 name: user.name,
                 email: user.email,
                 registration: user.registration,
@@ -33,11 +43,15 @@ function CreateUser() {
             })
 
         } catch (err) {
-            enqueueSnackbar(`Dados incorretos, tente novamente.`, {
+            enqueueSnackbar(`Houve um problema.`, {
                 variant: 'error'
             })
 
-            console.log(err.response.data)
+            if (err.message) {
+                enqueueSnackbar(`${err.message}`, {
+                    variant: 'error'
+                })
+            }
 
 
         } finally {
@@ -46,7 +60,8 @@ function CreateUser() {
                 name: "",
                 email: "",
                 registration: "",
-                password: ""
+                password: "",
+                confirmPassword: "",
             })
 
         }
@@ -68,11 +83,11 @@ function CreateUser() {
             </div>
             <div className="mb-5">
                 <label htmlFor="password" className="block mb-2 text-sm font-medium w-72 text-gray-900">Senha do estudante</label>
-                <input type="password" id="password" value={user.password} onChange={(e) => setUserData({ ...user, password: e.target.value })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="johndoe@discente.ifpe.edu.br" />
+                <input type="password" id="password" value={user.password} onChange={(e) => setUserData({ ...user, password: e.target.value })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="********" />
             </div>
             <div className="mb-5">
-                <label htmlFor="password" className="block mb-2 text-sm font-medium w-72 text-gray-900">Confirmar senha</label>
-                <input type="password" id="password" value={user.password} onChange={(e) => setUserData({ ...user, password: e.target.value })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="johndoe@discente.ifpe.edu.br" />
+                <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium w-72 text-gray-900">Confirmar senha</label>
+                <input type="password" id="confirmPassword" value={user.confirmPassword} onChange={(e) => setUserData({ ...user, confirmPassword: e.target.value })} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="********" />
             </div>
 
 
@@ -81,7 +96,7 @@ function CreateUser() {
             {loading ? (
                 <button disabled className="w-full flex justify-center bg-gray-600 hover:bg-gray-700 px-4 py-2 text-white font-semibold rounded"><LoaderCircle className='animate-spin-slow' /></button>
             ) : (
-                <button onClick={handleRemove} className="w-full bg-gray-600 hover:bg-gray-700 px-4 py-2 text-white font-semibold rounded">Deletar Usuário</button>
+                <button onClick={handleRemove} className="w-full bg-gray-600 hover:bg-gray-700 px-4 py-2 text-white font-semibold rounded">Criar usuário</button>
             )}
 
         </div>

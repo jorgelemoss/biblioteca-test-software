@@ -1,6 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
+
 import GuestRoute from '@routes/GuestRoute'
 import PrivateRoute from '@routes/PrivateRoute'
+import PrivateAdminRoute from '@routes/PrivateAdminRoute'
 
 import {
     GuestLayout,
@@ -9,9 +11,7 @@ import {
     Dashboard,
     SignIn
 } from '@pages/index'
-import { AppScreens, AdminScreens } from '../pages/app/index.app'
-import PrivateAdminRoute from './PrivateAdminRoute'
-
+import { AppScreens, AdminScreens } from '@pages/app/index.app'
 
 export const routes = createBrowserRouter([
     {
@@ -20,6 +20,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
+                index: true,
                 element: <Home />
             },
             {
@@ -39,27 +40,30 @@ export const routes = createBrowserRouter([
                     {
                         path: 'my-account',
                         element: <AppScreens.AppMyAccount />
-                    }, {
-                        path: 'favorites',
-                        element: <AppScreens.AppFavorites />
-                    }, {
-                        path: 'recents',
-                        element: <AppScreens.AppRecents />
-                    }, {
-                        path: 'wish-list',
-                        element: <AppScreens.AppWishList />
-                    }, {
+                    },
+                    {
                         path: 'user-management',
                         element: <PrivateAdminRoute><AppScreens.AppUserManagement /></PrivateAdminRoute>,
                         children: [
                             {
+                                path: "create",
+                                element: <AdminScreens.AdminCreate />
+                            },
+                            {
                                 path: "delete",
                                 element: <AdminScreens.AdminDelete />
+                            },
+                            {
+                                path: "all-users",
+                                element: <AdminScreens.AdminAllUsers />,
+                                children: [
+                                    {
+                                        path: "user/:id",
+                                        element: <AdminScreens.AdminUserPage />
+                                    }
+                                ]
                             }
                         ]
-                    }, {
-                        path: 'faq',
-                        element: <AppScreens.AppFaq />
                     },
                 ]
             }

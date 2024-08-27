@@ -3,6 +3,51 @@ import { errors } from '../../errors/repositories/UserPrismaRepositoryErrors.js'
 
 export default class UserPrismaRepository {
 
+    async findOnlyUserById(id) {
+        const user = await prisma.user.findUnique({
+            where: {
+                id,
+                role: {
+                    contains: "User"
+                }
+            }
+        })
+
+        return user
+    }
+
+    async getAllUsers() {
+        const user = await prisma.user.findMany({
+            where: {
+                role: {
+                    contains: "User"
+                }
+            },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                registration: true,
+                role: true,
+            }
+        })
+
+        return user
+    }
+
+    async getUserByRole(email) {
+        const role = await prisma.user.findUnique({
+            where: {
+                email
+            },
+            select: {
+                role: true
+            }
+        })
+
+        return role
+    }
+
     async findByRegistration(registration) { // Find user by registration
         try {
             const user = await prisma.user.findUnique({

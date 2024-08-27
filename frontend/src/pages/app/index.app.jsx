@@ -1,22 +1,19 @@
 import MyAccount from './myaccount'
-import Favorites from './favorites'
-import Recents from './recents'
-import WishList from './wish-list'
 import UserManegment from './user-management'
-import Faq from './faq'
 import DeleteUser from './admin/delete-user'
-
-
+import CreateUser from './admin/create-user'
+import AllUsers from './admin/all-users'
+import UserPage from './admin/user-page'
 
 export const AdminScreens = {
-    AdminDelete: DeleteUser
+    AdminDelete: DeleteUser,
+    AdminCreate: CreateUser,
+    AdminAllUsers: AllUsers,
+    AdminUserPage: UserPage
 }
 
 export const AppScreens = {
     AppMyAccount: MyAccount,
-    AppFavorites: Favorites,
-    AppRecents: Recents,
-    AppWishList: WishList,
     AppUserManagement: UserManegment,
-    AppFaq: Faq
+
 }

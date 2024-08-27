@@ -1,5 +1,5 @@
 import { LoaderCircle } from "lucide-react"
-import { remove_user } from "../../../api/index.js"
+import { remove } from "../../../api/index.js"
 import { useState } from 'react'
 
 import { enqueueSnackbar } from 'notistack'
@@ -21,7 +21,7 @@ function DeleteUser() {
 
             setLoading(true)
 
-            const { data } = await remove_user({
+            const { data } = await remove({
                 registration: user.registration,
                 email: user.email,
                 title: user.title,

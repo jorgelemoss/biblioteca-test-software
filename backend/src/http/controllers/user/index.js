@@ -2,12 +2,19 @@
 
 import { AuthenticateController } from './user-authenticate.js'
 import { ProfileController } from './user-profile.js'
+import { PerIdController } from '../user/user-per-id.js'
 import { LogoutController } from './user-logout.js'
 import { UserRemoveController } from './user-remove.js'
+import { UpdateController } from './user-update.js'
+import { AllUsersController } from '../all-users.controller.js'
+
 
 export {
     AuthenticateController,
     ProfileController,
+    PerIdController,
     LogoutController,
-    UserRemoveController
+    UserRemoveController,
+    UpdateController,
+    AllUsersController
 }

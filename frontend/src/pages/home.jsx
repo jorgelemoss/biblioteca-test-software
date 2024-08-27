@@ -1,6 +1,6 @@
 function Home() {
     return (
-        <main className="bg-white px-5 flex justify-center items-center w-full min-h-screen overflow-hidden">
+        <main className="bg-white px-5 gap-14 sm:gap-0 flex flex-col sm:flex-row justify-center items-center w-full min-h-screen overflow-hidden">
             <section className="flex">
                 <div className="flex flex-col justify-center items-center text-center">
                     <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">Universo de conhecimento.</h1>
@@ -11,7 +11,7 @@ function Home() {
                 </div>
             </section>
             <div className="px-6 z-0">
-                <img className="border-[#68d06b] border-4" src="https://imagens3.ne10.uol.com.br/blogsjconline/blogdofera/2017/10/IFPE_editada.jpg" />
+                <img className="border-gray-800 border-4" src="https://imagens3.ne10.uol.com.br/blogsjconline/blogdofera/2017/10/IFPE_editada.jpg" />
             </div>
         </main>
 

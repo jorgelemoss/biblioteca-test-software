@@ -21,25 +21,25 @@ function Dashboard() {
             key: 2,
             name: "Favoritos",
             icon: Bookmark,
-            link: "/main/user/favorites"
+            link: "#"
         },
         {
             key: 3,
             name: "Lista de Desejos",
             icon: Star,
-            link: "/main/user/wish-list"
+            link: "#"
         },
         {
             key: 4,
             name: "Novidades",
             icon: BookCopy,
-            link: "/main/user/recents"
+            link: "#"
         },
         {
             key: 5,
             name: "FAQ",
             icon: TableOfContents,
-            link: "/main/user/faq"
+            link: "#"
         }
     ]
 

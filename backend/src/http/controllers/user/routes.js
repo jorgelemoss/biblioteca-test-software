@@ -4,7 +4,10 @@ import {
     AuthenticateController,
     ProfileController,
     LogoutController,
-    UserRemoveController
+    UserRemoveController,
+    UpdateController,
+    AllUsersController,
+    PerIdController
 } from './index.js'
 import { VerifyJWT } from '../../middlewares/jwt/VerifyJWT.js'
 
@@ -16,7 +19,13 @@ router.post('/auth', AuthenticateController) // Authenticate a user
 
 router.get('/me', [VerifyJWT], ProfileController) // Get User Profile (User should is authenticated)
 
-router.delete('/user-remove', [VerifyJWT], UserRemoveController)
+router.get('/all-users', [VerifyJWT], AllUsersController) // Get all users
+
+router.get('/user/:id', [VerifyJWT], PerIdController) // Get user by id
+
+router.put('/user-update', [VerifyJWT], UpdateController) // Update user data
+
+router.delete('/user-remove', [VerifyJWT], UserRemoveController) // Delete user data
 
 router.get('/logout', [VerifyJWT], LogoutController) // Log the user out (User should is authenticated)
 

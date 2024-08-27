@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: 'http://localhost:4000',
     withCredentials: true,
     headers: {
@@ -11,10 +11,16 @@ const api = axios.create({
 
 // User
 export const login = (data) => api.post('/api/auth', data)
-export const register = (data) => api.post('/api/user', data)
-export const get_profile = () => api.get('/api/me')
+export const profile = () => api.get('/api/me')
 
 export const logout = () => api.get('/api/logout')
 
 // Admin
-export const remove_user = (data) => api.delete('/api/user-remove', { data })
+export const register = (data) => api.post('/api/user', data)
+export const update = (data) => api.put('/api/user-update', data)
+export const remove = (data) => api.delete('/api/user-remove', { data })
+export const allUsers = () => api.get('/api/all-users')
+
+api.interceptors.request((config) => {
+    return config
+})

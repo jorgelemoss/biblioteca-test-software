@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { setAuth } from '../redux/user/userSlice'
-import { get_profile } from '@api/index'
+import { setAuth } from '@redux/user/userSlice'
+import { setAllUsers } from '@redux/user/allUsersSlice'
+import { profile, allUsers } from '@api/index'
 
 export const useLoadingRefresh = () => {
 
@@ -11,7 +12,9 @@ export const useLoadingRefresh = () => {
 
     const loadFetching = useCallback(async () => {
         try {
-            const { data } = await get_profile()
+            const { data } = await profile()
+            const { data: AllUsers } = await allUsers()
+            dispatch(setAllUsers(AllUsers))
             dispatch(setAuth(data))
         } catch (err) {
             console.log(err)
