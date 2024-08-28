@@ -68,6 +68,15 @@ export default class UserPrismaRepository {
         const user = await prisma.user.findUnique({
             where: {
                 id // Find user id in User Model
+            },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                registration: true,
+                password: false,
+                image: true,
+                role: true,
             }
         })
 
