@@ -8,7 +8,7 @@ const JWT_SECRET = env.JWT_SECRET
 export const VerifyJWT = (req, res, next) => {
 
     try {
-        const { accessToken } = req.cookies // Get accessTokem cookie from frontend
+        const { accessToken } = req.cookies // Get accessToken cookie from frontend
 
         if (!accessToken) { // If accessToken is null
             throw new Error("Not have token")

@@ -23,11 +23,9 @@ router.get('/all-users', [VerifyJWT], AllUsersController) // Get all users
 
 router.get('/user/:id', [VerifyJWT], PerIdController) // Get user by id
 
-router.put('/user-update', [VerifyJWT], UpdateController) // Update user data
+router.get('/logout', [VerifyJWT], LogoutController) // Log the user out (User should is authenticated)
 
 router.delete('/user-remove', [VerifyJWT], UserRemoveController) // Delete user data
-
-router.get('/logout', [VerifyJWT], LogoutController) // Log the user out (User should is authenticated)
 
 export {
     router as UserRoutes //Rename route to UserRoutes and export it (reference: app.js)

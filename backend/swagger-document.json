@@ -184,6 +184,249 @@
                     }
                 }
             }
+        },
+        "/all-users": {
+            "get": {
+                "summary": "Obtém os dados de todos usuários, exceto administradores",
+                "description": "Informações gerais de usuários.",
+                "responses": {
+                    "200": {
+                        "description": "Dados retornados com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/all-users"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Houve um erro na requisição.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Token de autenticação inválida."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não tem possui permissão para esta ação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível executar esta ação."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não foi possível realizar esta solicitação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível de executar."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/:id": {
+            "get": {
+                "summary": "Obtém dados de um usuário através do Id",
+                "description": "Informações gerais do usuário.",
+                "responses": {
+                    "200": {
+                        "description": "Dados retornados com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/all-users"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Houve um erro na requisição.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Token de autenticação inválida."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não tem possui permissão para esta ação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível executar esta ação."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não foi possível realizar esta solicitação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível de executar."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "get": {
+                "summary": "Desloga o usuário.",
+                "description": "Desloga o usuário autenticado, removendo o token de acesso.",
+                "responses": {
+                    "200": {
+                        "description": "Usuário deslogado com sucesso."
+                    },
+                    "400": {
+                        "description": "Houve um erro na requisição.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Token de autenticação inválida."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não foi possível realizar esta solicitação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível de executar."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user-remove": {
+            "delete": {
+                "summary": "Remove o usuário e seus dados.",
+                "description": "Deleta completamente o usuário do banco de dados.",
+                "requestBody": {
+                    "content": {
+                        "json/application": {
+                            "schema": {
+                                "$ref": "#/components/schemas/remove-user"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário removido."
+                    },
+                    "400": {
+                        "description": "Houve um erro na requisição.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Token de autenticação inválida."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não tem possui permissão para esta ação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível executar esta ação."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não foi possível realizar esta solicitação.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Impossível de executar."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -282,6 +525,72 @@
                     "registration",
                     "password"
                 ]
+            },
+            "all-users": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer",
+                            "description": "ID do usuário"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Nome do usuário"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "email",
+                            "description": "Email do usuário"
+                        },
+                        "registration": {
+                            "type": "string",
+                            "description": "Matrícula do usuário"
+                        },
+                        "password": {
+                            "type": "string",
+                            "format": "password",
+                            "description": "Senha do usuário"
+                        },
+                        "image": {
+                            "type": "string",
+                            "description": "Link para a foto"
+                        },
+                        "role": {
+                            "type": "string",
+                            "description": "Cargo do usuário"
+                        }
+                    }
+                }
+            },
+            "remove-user": {
+                "type": "object",
+                "properties": {
+                    "registration": {
+                        "type": "string",
+                        "description": "Matrícula do usuário"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email do usuário"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Motivo da remoção"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descrição do motivo da remoção"
+                    }
+                },
+                "example": {
+                    "registration": "20241ADSPL0000",
+                    "email": "johndoe@doscente.ifpe.edu.br",
+                    "title": "Isso, isso, isso e isso...",
+                    "description": "Ah, sei que la, la sei oque, la que sei e sei que la..."
+                }
             }
         }
     }

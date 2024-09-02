@@ -17,6 +17,7 @@ export default class PerIdCommand {
     }
 
     async getUserById(id) {
+
         const user = await this.#userRepository.findOnlyUserById(id)
 
         if (!user) {

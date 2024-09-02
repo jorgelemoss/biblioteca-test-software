@@ -7,7 +7,7 @@ import { server } from "../../../../server";
 
 describe('User authenticate', () => {
     it('POST /api/auth', async () => {
-        const res = await request(server)
+        await request(server)
             .post('/api/auth')
             .send({
                 "registration": "20241ADSPL0000",
