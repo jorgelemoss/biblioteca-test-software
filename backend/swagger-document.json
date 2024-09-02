@@ -6,7 +6,7 @@
         "version": "0.0.1"
     },
     "paths": {
-        "/user": {
+        "/api/user": {
             "post": {
                 "summary": "Criar um usuário",
                 "description": "Registra um novo usuário",
@@ -83,7 +83,7 @@
                 }
             }
         },
-        "/auth": {
+        "/api/auth": {
             "post": {
                 "summary": "Autenticar o usuario",
                 "description": "Autentica um usuário anteriormente criado.",
@@ -151,7 +151,7 @@
                 }
             }
         },
-        "/me": {
+        "/api/me": {
             "get": {
                 "summary": "Obtém os dados do usuário",
                 "description": "Informações gerais do usuário autenticado.",
@@ -185,7 +185,7 @@
                 }
             }
         },
-        "/all-users": {
+        "/api/all-users": {
             "get": {
                 "summary": "Obtém os dados de todos usuários, exceto administradores",
                 "description": "Informações gerais de usuários.",
@@ -251,7 +251,7 @@
                 }
             }
         },
-        "/user/:id": {
+        "/api/user/:id": {
             "get": {
                 "summary": "Obtém dados de um usuário através do Id",
                 "description": "Informações gerais do usuário.",
@@ -317,7 +317,7 @@
                 }
             }
         },
-        "/logout": {
+        "/api/logout": {
             "get": {
                 "summary": "Desloga o usuário.",
                 "description": "Desloga o usuário autenticado, removendo o token de acesso.",
@@ -360,7 +360,7 @@
                 }
             }
         },
-        "/user-remove": {
+        "/api/user-remove": {
             "delete": {
                 "summary": "Remove o usuário e seus dados.",
                 "description": "Deleta completamente o usuário do banco de dados.",
