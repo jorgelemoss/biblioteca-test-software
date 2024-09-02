@@ -4,13 +4,20 @@ import { authUser } from '../../../../utils/test/auth-user'
 import { server } from '../../../../server'
 
 describe('Remove user', () => {
-    it('GET /api/me', async () => {
+    it('DELETE /api/me', async () => {
         const token = await authUser(server)
 
-        const profileRes = await request(server)
-            .get('/api/user-remove')
+        const user = await request(server)
+            .delete('/api/user-remove')
+            .send({
+                "registration": "20241ADSPL0001",
+                "email": "raysamoraes@discente.ifpe.edu.br",
+                "title": "Isso, isso, isso e isso...",
+                "description": "Ah, sei que la, la sei oque, la que sei e sei que la..."
+            })
             .set('Cookie', `accessToken=${token}`)
 
-        expect(profileRes.body.status).toBe(200)
+
+        expect(user.body.status).toBe(200)
     })
 })

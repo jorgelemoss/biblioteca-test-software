@@ -48,6 +48,19 @@ export default class UserPrismaRepository {
         return role
     }
 
+    async updateUserRole(email, role) {
+        const user = await prisma.user.updateMany({
+            where: {
+                email
+            },
+            data: {
+                role: role
+            }
+        })
+
+        return user
+    }
+
     async findByRegistration(registration) { // Find user by registration
         try {
             const user = await prisma.user.findUnique({

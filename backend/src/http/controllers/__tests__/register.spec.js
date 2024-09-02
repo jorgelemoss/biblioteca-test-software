@@ -6,7 +6,7 @@ import request from 'supertest'
 import { server } from "../../../server";
 
 describe('User register', () => {
-    it('Should be register', async () => {
+    it('POST /api/user', async () => {
         await request(server)
             .post('/api/user')
             .send({

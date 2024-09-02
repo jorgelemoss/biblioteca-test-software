@@ -5,7 +5,6 @@ import {
     ProfileController,
     LogoutController,
     UserRemoveController,
-    UpdateController,
     AllUsersController,
     PerIdController
 } from './index.js'

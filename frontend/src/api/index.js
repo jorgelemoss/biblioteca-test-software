@@ -21,6 +21,6 @@ export const update = (data) => api.put('/api/user-update', data)
 export const remove = (data) => api.delete('/api/user-remove', { data })
 export const allUsers = () => api.get('/api/all-users')
 
-api.interceptors.request((config) => {
-    return config
-})
+// api.interceptors.request((config) => {
+//     return config
+// })

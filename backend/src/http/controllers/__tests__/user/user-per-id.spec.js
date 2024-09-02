@@ -3,8 +3,8 @@ import request from "supertest";
 import { authUser } from "../../../../utils/test/auth-user";
 import { server } from "../../../../server";
 
-describe('Get user data', () => {
-    it("GET /user/:id", async () => {
+describe('Get data user by id  ', () => {
+    it("GET /api/user/:id", async () => {
         const token = await authUser(server)
 
         const userId = await request(server)

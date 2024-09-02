@@ -3,14 +3,15 @@ import request from 'supertest'
 import { authUser } from '../../../../utils/test/auth-user'
 import { server } from '../../../../server'
 
-describe('Get user profile', () => {
-    it('GET /api/me', async () => {
+describe('Get all users', () => {
+    it('GET /api/all-users', async () => {
         const token = await authUser(server)
 
-        const profileRes = await request(server)
-            .get('/api/me')
+        const allUsers = await request(server)
+            .get('/api/all-users')
             .set('Cookie', `accessToken=${token}`)
 
-        expect(profileRes.body.status).toEqual(200)
+
+        expect(allUsers.body.status).toBe(200)
     })
 })

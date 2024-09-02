@@ -14,6 +14,7 @@ export async function ProfileController(req, res) {
         res
             .status(200)
             .send({
+                status: 200,
                 auth: true,
                 user
             })
