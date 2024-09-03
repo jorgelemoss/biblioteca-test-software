@@ -35,6 +35,18 @@ export class UserInMemoryRepos {
         return user || null
     }
 
+    async create(data) {
+        const user = {
+            ...data,
+            id: randomUUID(),
+            created_at: new Date()
+        }
+
+        this.items.push(user)
+
+        return user
+    }
+
     async getAllUsers() {
         return this.items
     }

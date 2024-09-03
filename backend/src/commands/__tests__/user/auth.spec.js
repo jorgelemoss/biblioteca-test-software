@@ -1,6 +1,6 @@
 import { expect, describe, it, beforeEach } from 'vitest';
 import bcrypt from 'bcryptjs';
-import { InMemoryUsersRepository } from '../../../repositories/in-memory/UserInMemoryRepos';
+import { UserInMemoryRepos } from '../../../repositories/in-memory/UserInMemoryRepos';
 import AuthenticateCommand from '../../user/authenticate.command';
 
 
@@ -9,7 +9,7 @@ let makeAuth;
 
 describe('Authenticate Use Case', () => {
     beforeEach(() => {
-        usersRepository = new InMemoryUsersRepository();
+        usersRepository = new UserInMemoryRepos();
         makeAuth = new AuthenticateCommand(usersRepository);
     });
 
