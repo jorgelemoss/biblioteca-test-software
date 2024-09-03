@@ -15,14 +15,15 @@ describe('Authenticate Use Case', () => {
 
     it('it should be able to authenticate', async () => {
         await usersRepository.create({
-            name: 'John Doe',
-            email: 'johndoe@discente.ifpe.edu.br',
-            password: await bcrypt.hash('12345678', 10),
+            name: "John Doe",
+            email: "johndoe@discente.ifpe.edu.br",
+            registration: "20241ADSPL0000",
+            password: "12345678"
         });
 
         const { user } = await makeAuth.execute({
-            email: 'johndoe@discente.ifpe.edu.br',
-            password: '12345678',
+            registration: "20241ADSPL0000",
+            password: "12345678"
         });
 
         expect(user.id).toEqual(expect.any(String));
@@ -31,22 +32,21 @@ describe('Authenticate Use Case', () => {
     it('it should not be able to authenticate with wrong email', async () => {
         await expect(() =>
             makeAuth.execute({
-                email: 'johndoe@discente.ifpe.edu.br',
-                password: '12345678',
+                registration: "20241ADSPL0000",
+                password: "12345678"
             }),
         ).rejects.toBeInstanceOf(InvalidCredentialsError);
     });
 
     it('it should not be able to authenticate with wrong password', async () => {
         await usersRepository.create({
-            name: 'John Doe',
-            email: 'johndoe@discente.ifpe.edu.br',
+            registration: "20241ADSPL0000",
             password: await bcrypt.hash('12345678', 10),
         });
 
         await expect(() =>
             makeAuth.execute({
-                email: 'johndoe@discente.ifpe.edu.br',
+                registration: "20241ADSPL0000",
                 password: '12345678',
             }),
         ).rejects.toBeInstanceOf(InvalidCredentialsError);

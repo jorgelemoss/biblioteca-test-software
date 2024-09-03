@@ -10,18 +10,18 @@ export class UserInMemoryRepos {
         this.items.push({
             id: randomUUID(),
             name: "John Doe",
-            email: "johndoe@doscente.ifpe.edu.br",
-            role: "Admin",
-            password: "hashedpassword123"
+            email: "johndoe@discente.ifpe.edu.br",
+            registration: "20241ADSPL0000",
+            password: "12345678"
         })
 
         // Adiciona um usuário não-admin para os testes
         this.items.push({
             id: randomUUID(),
-            name: "Jane Doe",
-            email: "nonadmin@doscente.ifpe.edu.br",
-            role: "User",
-            password: "hashedpassword456"
+            name: "Raysa Moraes",
+            email: "raysamoraes@discente.ifpe.edu.br",
+            registration: "20241ADSPL0001",
+            password: "12345678"
         })
     }
 
