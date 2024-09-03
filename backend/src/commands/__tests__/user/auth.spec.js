@@ -1,5 +1,5 @@
 import { expect, describe, it, beforeEach } from 'vitest';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import { UserInMemoryRepos } from '../../../repositories/in-memory/UserInMemoryRepos';
 import AuthenticateCommand from '../../user/authenticate.command';
 

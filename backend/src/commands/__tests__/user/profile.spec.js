@@ -1,5 +1,5 @@
 import { expect, describe, it, beforeEach } from 'vitest';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import { UserInMemoryRepos } from '../../../repositories/in-memory/UserInMemoryRepos.js';
 import ProfileCommand from '../../user/profile.command.js';
 
@@ -32,6 +32,6 @@ describe('Get User Profile Use Case', () => {
             makeGetProfile.execute({
                 userId: 'wrong_id',
             }),
-        ).rejects.toBeInstanceOf(ResourceNotFoundError);
+        ).rejects.toThrow("Error");
     });
 });

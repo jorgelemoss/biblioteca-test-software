@@ -47,6 +47,13 @@ export class UserInMemoryRepos {
         return user
     }
 
+    async findByRegistration(registration) { // Find user by registration
+
+        const user = await this.items.find((user) => user.registration === registration)
+
+        return user
+    }
+
     async getAllUsers() {
         return this.items
     }
