@@ -1,6 +1,6 @@
 import { expect, describe, it, beforeEach } from 'vitest';
 import bcrypt from 'bcryptjs';
-import { InMemoryUsersRepository } from '../../../repositories/in-memory/UserInMemoryRepos.js';
+import { UserInMemoryRepos } from '../../../repositories/in-memory/UserInMemoryRepos.js';
 import ProfileCommand from '../../user/profile.command.js';
 
 let usersRepository;
@@ -8,7 +8,7 @@ let makeGetProfile;
 
 describe('Get User Profile Use Case', () => {
     beforeEach(() => {
-        usersRepository = new InMemoryUsersRepository();
+        usersRepository = new UserInMemoryRepos();
         makeGetProfile = new ProfileCommand(usersRepository);
     });
 
