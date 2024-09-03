@@ -18,7 +18,8 @@ describe('Authenticate Use Case', () => {
             name: "John Doe",
             email: "johndoe@discente.ifpe.edu.br",
             registration: "20241ADSPL0000",
-            password: "12345678"
+            password: await bcrypt.hash("12345678", 10),
+            role: "Admin"
         });
 
         const { user } = await makeAuth.execute({
@@ -29,14 +30,13 @@ describe('Authenticate Use Case', () => {
         expect(user.id).toEqual(expect.any(String));
     });
 
-    it('it should not be able to authenticate with wrong email', async () => {
-        await expect(() =>
-            makeAuth.execute({
-                registration: "20241ADSPL0000",
-                password: "12345678"
-            }),
-        ).rejects.toBeInstanceOf(InvalidCredentialsError);
+    it('it should not be able to authenticate with wrong registration', async () => {
+        await expect(makeAuth.execute({
+            registration: "20241ADSPL9999", // Um registro que não existe
+            password: "12345678"
+        })).rejects.toThrow("User not exists, try again.");
     });
+
 
     it('it should not be able to authenticate with wrong password', async () => {
         await usersRepository.create({
@@ -44,11 +44,9 @@ describe('Authenticate Use Case', () => {
             password: await bcrypt.hash('12345678', 10),
         });
 
-        await expect(() =>
-            makeAuth.execute({
-                registration: "20241ADSPL0000",
-                password: '12345678',
-            }),
-        ).rejects.toBeInstanceOf(InvalidCredentialsError);
+        await expect(makeAuth.execute({
+            registration: "20241ADSPL0000",
+            password: '123456789',
+        })).rejects.toThrow("Password not match");
     });
 });

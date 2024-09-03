@@ -9,11 +9,15 @@ export default class AllUsersCommand {
     async confirmAdmin(email) {
         const admin = await this.#userRepository.findByEmail(email)
 
-        if (admin.role !== "Admin") {
+        if (!admin) {
             throw new Error("User is not a admin")
         }
 
-        return { admin }
+        if (admin.role !== "Admin") {
+            throw new Error("User is not admin")
+        }
+
+        return admin
     }
 
     async getAllUser() {

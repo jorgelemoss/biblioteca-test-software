@@ -1,4 +1,5 @@
 import { randomUUID } from "crypto"
+import bcrypt from 'bcrypt'
 
 /** Usado apenas para @Tests */
 
@@ -12,7 +13,8 @@ export class UserInMemoryRepos {
             name: "John Doe",
             email: "johndoe@discente.ifpe.edu.br",
             registration: "20241ADSPL0000",
-            password: "12345678"
+            password: bcrypt.hashSync("12345678", 10),
+            role: "Admin"
         })
 
         // Adiciona um usuário não-admin para os testes
@@ -21,7 +23,8 @@ export class UserInMemoryRepos {
             name: "Raysa Moraes",
             email: "raysamoraes@discente.ifpe.edu.br",
             registration: "20241ADSPL0001",
-            password: "12345678"
+            password: bcrypt.hashSync("12345678", 10),
+            role: "User"
         })
     }
 

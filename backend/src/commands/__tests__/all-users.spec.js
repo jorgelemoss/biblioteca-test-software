@@ -13,13 +13,14 @@ describe('Register user (command)', () => {
     })
 
     it('User admin should be able to get all users', async () => {
-        const admin = await makeGetAllUsers.confirmAdmin("johndoe@doscente.ifpe.edu.br")
+        const admin = await makeGetAllUsers.confirmAdmin("johndoe@discente.ifpe.edu.br")
 
         expect(admin.role).toBe("Admin")
     })
 
     it('Non-admin user should not be able to get all users', async () => {
-        await expect(makeGetAllUsers.confirmAdmin("nonadmin@doscente.ifpe.edu.br")).rejects.toThrow("User is not a admin")
+        await expect(makeGetAllUsers.confirmAdmin("raysamoraes@discente.ifpe.edu.br")).rejects.toThrow("User is not admin")
     })
+
 
 })
