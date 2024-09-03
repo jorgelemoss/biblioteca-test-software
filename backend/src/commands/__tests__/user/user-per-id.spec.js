@@ -1,36 +1,30 @@
 import { expect, describe, it, beforeEach } from 'vitest';
-import { hash } from 'bcryptjs';
+import { UserInMemoryRepos } from '../../../repositories/in-memory/UserInMemoryRepos.js';
+import PerIdCommand from '../../user/user-per-id.command.js';
 
+let usersRepository;
+let makeGetUserById;
 
-let usersRepository
-let sut
+describe('Get User By Id', () => {
 
-describe('Get User Profile Use Case', () => {
     beforeEach(() => {
-        usersRepository = new InMemoryUsersRepository();
-        sut = new GetUserProfileUseCase(usersRepository);
+        usersRepository = new UserInMemoryRepos();
+        makeGetUserById = new PerIdCommand(usersRepository);
     });
 
-    it('it should be able to get user profile', async () => {
-        const createdUser = await usersRepository.create({
-            name: 'John Doe',
-            email: 'mane@qualquer.com',
-            password_hash: await hash('123456', 6),
-        });
+    it('Should return the user when a valid ID is provided', async () => {
+        const existingUser = usersRepository.items[0];
 
-        const { user } = await sut.execute({
-            userId: createdUser.id,
-        });
+        const user = await makeGetUserById.getUserById(existingUser.id);
 
-        expect(user.id).toEqual(expect.any(String));
-        expect(user.name).toEqual('John Doe');
+        expect(user).toBeTruthy();
+        expect(user.id).toBe(existingUser.id);
     });
 
-    it('it should not be able to get user profile with wrong id', async () => {
-        await expect(() =>
-            sut.execute({
-                userId: 'wrong_id',
-            }),
-        ).rejects.toBeInstanceOf(ResourceNotFoundError);
+    it('Should throw an error if the user does not exist', async () => {
+        await expect(makeGetUserById.getUserById("non-existing-id"))
+            .rejects
+            .toThrow("User doesn't exist");
     });
+
 });

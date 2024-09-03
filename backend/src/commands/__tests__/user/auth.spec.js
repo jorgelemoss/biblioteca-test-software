@@ -1,26 +1,28 @@
 import { expect, describe, it, beforeEach } from 'vitest';
-import { hash } from 'bcryptjs';
+import bcrypt from 'bcryptjs';
+import { InMemoryUsersRepository } from '../../../repositories/in-memory/UserInMemoryRepos';
+import AuthenticateCommand from '../../user/authenticate.command';
 
 
 let usersRepository;
-let sut;
+let makeAuth;
 
 describe('Authenticate Use Case', () => {
     beforeEach(() => {
         usersRepository = new InMemoryUsersRepository();
-        sut = new AuthenticateUseCase(usersRepository);
+        makeAuth = new AuthenticateCommand(usersRepository);
     });
 
     it('it should be able to authenticate', async () => {
         await usersRepository.create({
             name: 'John Doe',
-            email: 'mane@qualquer.com',
-            password_hash: await hash('123456', 6),
+            email: 'johndoe@discente.ifpe.edu.br',
+            password: await bcrypt.hash('12345678', 10),
         });
 
-        const { user } = await sut.execute({
-            email: 'mane@qualquer.com',
-            password: '123456',
+        const { user } = await makeAuth.execute({
+            email: 'johndoe@discente.ifpe.edu.br',
+            password: '12345678',
         });
 
         expect(user.id).toEqual(expect.any(String));
@@ -28,9 +30,9 @@ describe('Authenticate Use Case', () => {
 
     it('it should not be able to authenticate with wrong email', async () => {
         await expect(() =>
-            sut.execute({
-                email: 'nao@existe.com',
-                password: '123456',
+            makeAuth.execute({
+                email: 'johndoe@discente.ifpe.edu.br',
+                password: '12345678',
             }),
         ).rejects.toBeInstanceOf(InvalidCredentialsError);
     });
@@ -38,14 +40,14 @@ describe('Authenticate Use Case', () => {
     it('it should not be able to authenticate with wrong password', async () => {
         await usersRepository.create({
             name: 'John Doe',
-            email: 'mane@qualquer.com',
-            password_hash: await hash('123456', 6),
+            email: 'johndoe@discente.ifpe.edu.br',
+            password: await bcrypt.hash('12345678', 10),
         });
 
         await expect(() =>
-            sut.execute({
-                email: 'mane@qualquer.com',
-                password: '1234',
+            makeAuth.execute({
+                email: 'johndoe@discente.ifpe.edu.br',
+                password: '12345678',
             }),
         ).rejects.toBeInstanceOf(InvalidCredentialsError);
     });

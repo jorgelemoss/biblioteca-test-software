@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { UserInMemoryRepos } from '../../repositories/in-memory/UserInMemoryRepos'
-import AllUserCommand from '../all-users.command.js'
-import { errors } from '../../errors/commands/RegisterCommandError.js'
+import { UserInMemoryRepos } from '../../repositories/in-memory/UserInMemoryRepos.js'
+import AllUsersCommand from '../all-users.command.js'
 
 describe('Register user (command)', () => {
 
@@ -10,7 +9,7 @@ describe('Register user (command)', () => {
 
     beforeEach(() => {
         usersMemoryRepository = new UserInMemoryRepos()
-        makeGetAllUsers = new AllUserCommand(usersMemoryRepository)
+        makeGetAllUsers = new AllUsersCommand(usersMemoryRepository)
     })
 
     it('User admin should be able to get all users', async () => {
@@ -19,6 +18,8 @@ describe('Register user (command)', () => {
         expect(admin.role).toBe("Admin")
     })
 
-    it('User ')
+    it('Non-admin user should not be able to get all users', async () => {
+        await expect(makeGetAllUsers.confirmAdmin("nonadmin@doscente.ifpe.edu.br")).rejects.toThrow("User is not a admin")
+    })
 
 })

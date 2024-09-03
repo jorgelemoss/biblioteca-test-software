@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { UserInMemoryRepos } from '../../repositories/in-memory/UserInMemoryRepos'
 import RegisterCommand from '../register.command.js'
 import { compare } from 'bcrypt'
@@ -22,7 +22,7 @@ describe('Register user (command)', () => {
             "password": "12345678"
         })
 
-        expect(user.id).toEqual(expect.any(Number))
+        expect(user.id).toStrictEqual(expect.any(String))
     })
 
     it('Should hash user password equals', async () => {
@@ -48,14 +48,14 @@ describe('Register user (command)', () => {
             "password": "12345678"
         })
 
-        await expect(() => {
+        await expect(
             makeRegister.execute({
                 "name": "Alissa Doe",
                 email,
                 "registration": "20241ADSPL0002",
                 "password": "12345678"
             })
-        }).rejects.toBeInstanceOf(errors.userAlreadyExists)
+        ).rejects.toEqual(errors.userAlreadyExists)
 
     })
 })

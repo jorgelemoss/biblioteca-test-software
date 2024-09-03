@@ -1,25 +1,25 @@
 import { expect, describe, it, beforeEach } from 'vitest';
-import { hash } from 'bcryptjs';
+import bcrypt from 'bcryptjs';
+import { InMemoryUsersRepository } from '../../../repositories/in-memory/UserInMemoryRepos.js';
+import ProfileCommand from '../../user/profile.command.js';
 
-
-
-let usersRepository
-let sut
+let usersRepository;
+let makeGetProfile;
 
 describe('Get User Profile Use Case', () => {
     beforeEach(() => {
         usersRepository = new InMemoryUsersRepository();
-        sut = new GetUserProfileUseCase(usersRepository);
+        makeGetProfile = new ProfileCommand(usersRepository);
     });
 
     it('it should be able to get user profile', async () => {
         const createdUser = await usersRepository.create({
             name: 'John Doe',
-            email: 'mane@qualquer.com',
-            password_hash: await hash('123456', 6),
+            email: 'johndoe@discente.ifpe.edu.br',
+            password: await bcrypt.hash('12345678', 10),
         });
 
-        const { user } = await sut.execute({
+        const { user } = await makeGetProfile.execute({
             userId: createdUser.id,
         });
 
@@ -29,7 +29,7 @@ describe('Get User Profile Use Case', () => {
 
     it('it should not be able to get user profile with wrong id', async () => {
         await expect(() =>
-            sut.execute({
+            makeGetProfile.execute({
                 userId: 'wrong_id',
             }),
         ).rejects.toBeInstanceOf(ResourceNotFoundError);
