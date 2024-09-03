@@ -18,20 +18,22 @@ describe('Get User Profile Use Case', () => {
             email: 'johndoe@discente.ifpe.edu.br',
             password: await bcrypt.hash('12345678', 10),
         });
+        createdUser
 
         const { user } = await makeGetProfile.execute({
-            userId: createdUser.id,
+            id: createdUser.id
         });
+
 
         expect(user.id).toEqual(expect.any(String));
         expect(user.name).toEqual('John Doe');
     });
 
     it('it should not be able to get user profile with wrong id', async () => {
-        await expect(() =>
+        await expect(
             makeGetProfile.execute({
-                userId: 'wrong_id',
+                id: 'wrong_id',
             }),
-        ).rejects.toThrow("Error");
+        ).rejects.toThrow("User don't exists");
     });
 });

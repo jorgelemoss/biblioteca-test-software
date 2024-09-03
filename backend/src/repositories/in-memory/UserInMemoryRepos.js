@@ -34,7 +34,7 @@ export class UserInMemoryRepos {
     }
 
     async findByEmail(email) {
-        const user = this.items.find((item) => item.email === email)
+        const user = this.items.find((user) => user.email === email)
         return user || null
     }
 
@@ -49,6 +49,12 @@ export class UserInMemoryRepos {
 
         return user
     }
+
+    async findOnlyUserById(id) {
+        const user = this.items.find((user) => user.id == id)
+        return user
+    }
+
 
     async findByRegistration(registration) { // Find user by registration
 

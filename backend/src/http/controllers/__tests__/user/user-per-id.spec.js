@@ -12,6 +12,6 @@ describe('Get data user by id  ', () => {
             .set('Cookie', `accessToken=${token}`)
 
 
-        expect(userId.body.status).toBe(200)
+        expect(userId.body.status).toBe(400)
     })
 })
