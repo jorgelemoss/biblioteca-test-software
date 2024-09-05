@@ -40,6 +40,9 @@ function AllUsers() {
                         <TableHeader>
                             <tr>
                                 <th scope="col" className="px-6 py-3">
+                                    ID
+                                </th>
+                                <th scope="col" className="px-6 py-3">
                                     Nome
                                 </th>
                                 <th scope="col" className="px-6 py-3">
@@ -57,15 +60,26 @@ function AllUsers() {
                             {users?.map((user) => {
                                 return (
                                     <tr key={user} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                        <th className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {user.name}
-                                        </th>
-                                        <td className="px-6 py-4">
-                                            {user.registration}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {user.email}
-                                        </td>
+                                        {Object.entries(user).map(([key, value]) => {
+
+                                            if (key === "name") {
+                                                return (
+                                                    <th key={key} className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        {value}
+                                                    </th>
+                                                )
+                                            }
+
+                                            if (key === "role") {
+                                                return null
+                                            }
+
+                                            return (
+                                                <td key={key} className='px-6 py-4'>
+                                                    {value}
+                                                </td>
+                                            )
+                                        })}
                                         <td className="px-6 py-4">
                                             <button onClick={() => navigate(`/main/user/user-management/all-users/user/${user.id}`)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</button>
                                         </td>
